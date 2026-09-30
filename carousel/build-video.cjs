@@ -16,21 +16,27 @@ const T = 3600; // мс на слайд
     document.body.style.cssText = "margin:0;background:#0b1a30;overflow:hidden";
     const ease = "cubic-bezier(.2,.8,.2,1)";
     const slides = [...document.querySelectorAll(".slide")];
+    const last = slides.length - 1;
     slides.forEach((s, i) => {
       s.style.cssText += ";position:absolute;left:0;top:0;margin:0";
-      const base = i * T, dur = T + 350;
-      s.animate(i === 0 ? [{ opacity: 1 }, { opacity: 1 }] : [{ opacity: 0 }, { opacity: 1, offset: 0.1 }, { opacity: 1 }],
-        { duration: dur, delay: base, fill: "both" });
-      s.querySelector(".photo").animate([{ transform: "scale(1)" }, { transform: "scale(1.09)" }],
-        { duration: dur + 600, delay: base, easing: "linear", fill: "both" });
+      const base = i * T, dur = T + 450;
+      // перехід: поява з розмиттям, а вже показаний слайд наприкінці розмивається
+      const kf = i === 0
+        ? [{ opacity: 1, filter: "blur(0px)" }, { opacity: 1, filter: "blur(0px)", offset: 0.88 }, { opacity: 1, filter: "blur(16px)" }]
+        : [{ opacity: 0, filter: "blur(18px)" }, { opacity: 1, filter: "blur(0px)", offset: 0.14 }, { opacity: 1, filter: "blur(0px)", offset: 0.88 }, { opacity: 1, filter: i === last ? "blur(0px)" : "blur(16px)" }];
+      s.animate(kf, { duration: dur, delay: base, fill: "both" });
+      // фото: легкий зум + наведення на різкість
+      const ph = s.querySelector(".photo"), sh = s.querySelector(".shade");
+      ph.animate([{ transform: "scale(1.03)", filter: "blur(22px)" }, { transform: "scale(1.02)", filter: "blur(0px)", offset: 0.24 }, { transform: "scale(1)", filter: "blur(0px)" }],
+        { duration: dur, delay: base, easing: "ease-out", fill: "both" });
       const logo = s.querySelector(".logo");
-      if (logo) logo.animate([{ opacity: 0, transform: "translateY(60px) scale(.85)" }, { opacity: 1, transform: "none" }],
-        { duration: 800, delay: base + 350, easing: ease, fill: "both" });
+      if (logo) logo.animate([{ opacity: 0, transform: "translateY(26px) scale(.94)", filter: "blur(18px)" }, { opacity: 1, transform: "none", filter: "blur(0px)" }],
+        { duration: 900, delay: base + 420, easing: ease, fill: "both" });
       let k = 0;
       [...s.querySelectorAll(".content > *")].forEach((el) => {
         if (el.classList.contains("spacer")) return;
-        el.animate([{ opacity: 0, transform: "translateY(34px)" }, { opacity: 1, transform: "none" }],
-          { duration: 650, delay: base + 150 + k * 110, easing: ease, fill: "both" });
+        el.animate([{ opacity: 0, transform: "translateY(18px)", filter: "blur(14px)" }, { opacity: 1, transform: "none", filter: "blur(0px)" }],
+          { duration: 800, delay: base + 200 + k * 110, easing: ease, fill: "both" });
         k++;
       });
     });
