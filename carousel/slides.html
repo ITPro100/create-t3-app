@@ -44,6 +44,12 @@
   .s1 .name{font-size:62px}
   .logo{position:absolute;right:72px;top:700px;width:210px;height:210px;object-fit:cover;border-radius:50%;border:3px solid var(--gold);background:#0b1a30;box-shadow:0 8px 30px rgba(0,0,0,.5)}
   .logo.shield{border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain;width:230px;height:345px;top:565px;right:62px;clip-path:polygon(4.5% 14%,8% 10%,20% 6.5%,35% 5%,50% 4.4%,65% 5%,80% 6.5%,92% 10%,95.5% 14%,95.5% 62%,92% 70%,80% 80%,65% 88%,50% 93.5%,35% 88%,20% 80%,8% 70%,4.5% 62%)}
+  /* --- modern glass logo cards (override) --- */
+  .logo,.logo.shield{position:absolute;right:72px;top:706px;width:216px;height:216px;border-radius:48px;border:1px solid rgba(255,255,255,.22);background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.05));-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;padding:30px;object-fit:unset;clip-path:none;width:216px;height:216px}
+  .logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
+  .logo img.screen{mix-blend-mode:screen;filter:none;transform:scale(1.25)}
+  .logo img.shield{height:100%;clip-path:polygon(4.5% 14%,8% 10%,20% 6.5%,35% 5%,50% 4.4%,65% 5%,80% 6.5%,92% 10%,95.5% 14%,95.5% 62%,92% 70%,80% 80%,65% 88%,50% 93.5%,35% 88%,20% 80%,8% 70%,4.5% 62%);filter:none;margin:-6px 0}
+  .logo:has(.shield){padding:16px}
 </style>
 </head>
 <body>
@@ -70,7 +76,7 @@
 <!-- 2. ПРАВОВИЙ ЗАХИСТ ДНІПРО -->
 <section class="slide s2" id="slide2">
   <div class="photo"></div><div class="shade"></div>
-  <img class="logo" src="logo-pz.png">
+  <div class="logo"><img src="logo-pz.png"></div>
   <div class="content">
     <div class="top"><span>Компанія 01</span><span class="num">2 / 5</span></div>
     <div class="spacer"></div>
@@ -84,7 +90,7 @@
 <!-- 3. LEGAL UA -->
 <section class="slide s3" id="slide3">
   <div class="photo"></div><div class="shade"></div>
-  <img class="logo" src="logo-legalua-white.png" style="object-fit:contain;padding:34px 40px">
+  <div class="logo"><img src="logo-legalua-white.png"></div>
   <div class="content">
     <div class="top"><span>Компанія 02</span><span class="num">3 / 5</span></div>
     <div class="spacer"></div>
@@ -98,7 +104,7 @@
 <!-- 4. ПО «ВІЙСЬКОВЕ ПРАВО» -->
 <section class="slide s4" id="slide4">
   <div class="photo"></div><div class="shade"></div>
-  <img class="logo shield" src="logo-vp.png">
+  <div class="logo"><img class="shield" src="logo-vp.png"></div>
   <div class="content">
     <div class="top"><span>Компанія 03</span><span class="num">4 / 5</span></div>
     <div class="spacer"></div>
@@ -112,7 +118,7 @@
 <!-- 5. НЕЗАЛЕЖНЕ ЕКСПЕРТНО-КОНСУЛЬТАЦІЙНЕ БЮРО -->
 <section class="slide s5" id="slide5">
   <div class="photo"></div><div class="shade"></div>
-  <img class="logo" src="logo-expert.png">
+  <div class="logo"><img class="screen" src="logo-expert.png"></div>
   <div class="content">
     <div class="top"><span>Компанія 04</span><span class="num">5 / 5</span></div>
     <div class="spacer"></div>
