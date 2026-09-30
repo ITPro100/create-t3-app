@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>Carousel</title>
+<style>
+  /* ====== ЗАПОВНИТИ ЦІ ДАНІ (або змінити в build.js) ====== */
+  :root{
+    --navy:#0b1a30; --navy2:#12294a; --gold:#c9a45c; --gold2:#e6c98a; --white:#f6f3ec;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#222;font-family:"Inter","Roboto","Noto Sans","DejaVu Sans","Liberation Sans",Arial,sans-serif;color:var(--white)}
+  .slide{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--navy);margin:0 auto 40px}
+  .photo{position:absolute;inset:0;background:url("photo.jpg") no-repeat;background-size:cover}
+  .shade{position:absolute;inset:0}
+  .content{position:absolute;inset:0;padding:70px 72px;display:flex;flex-direction:column}
+  .top{display:flex;justify-content:space-between;align-items:center;font-size:24px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2)}
+  .top .num{font-weight:600}
+  .spacer{flex:1}
+  .rule{width:96px;height:4px;background:var(--gold);margin:0 0 28px}
+  .name{font-size:76px;line-height:1.05;font-weight:800;letter-spacing:-.01em;text-transform:uppercase}
+  .role{margin-top:22px;font-size:34px;font-weight:500;color:var(--gold2)}
+  .cert{margin-top:12px;font-size:28px;color:#d8d3c6}
+  .cert b{color:var(--white)}
+  .label{font-size:26px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin:34px 0 14px}
+  .co{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:16px 0;border-top:1px solid rgba(230,201,138,.35);font-size:30px;font-weight:600;line-height:1.2}
+  .co small{font-size:24px;font-weight:400;color:#cfc9ba;white-space:nowrap}
+  .big{font-size:64px;line-height:1.1;font-weight:800;text-transform:uppercase}
+  .edrpou{margin-top:22px;margin-bottom:10px;font-size:40px;color:var(--gold2);font-weight:600}
+  .founder{margin-top:36px;padding-top:26px;border-top:1px solid rgba(230,201,138,.35);font-size:30px;line-height:1.4;color:#e4dfd2}
+  .founder b{color:var(--white)}
+  .swipe{margin-top:30px;font-size:24px;letter-spacing:.12em;color:var(--gold2);text-transform:uppercase}
+  /* фото зверху, текст на панелі знизу */
+  .photo{inset:auto;top:0;left:0;right:0;background-repeat:no-repeat}
+  .shade{inset:auto;top:0;left:0;right:0}
+  .s1 .photo,.s1 .shade{height:680px}
+  .s2 .photo,.s2 .shade,.s3 .photo,.s3 .shade,.s4 .photo,.s4 .shade,.s5 .photo,.s5 .shade{height:940px}
+  .shade{background:linear-gradient(180deg,rgba(11,26,48,.7) 0%,rgba(11,26,48,0) 20%,rgba(11,26,48,0) 60%,var(--navy) 100%)}
+  .s1 .photo{background-size:1080px auto;background-position:0 -340px}
+  .s2 .photo{background-size:1080px auto;background-position:0 -290px}
+  .s3 .photo{background-size:1620px auto;background-position:-470px -600px}
+  .s4 .photo{background-size:1620px auto;background-position:0 -1150px}
+  .s5 .photo{background-size:1620px auto;background-position:-380px -1140px}
+  .s1 .name{font-size:62px}
+  .logo{position:absolute;right:72px;top:700px;width:210px;height:210px;object-fit:cover;border-radius:50%;border:3px solid var(--gold);background:#0b1a30;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+  .logo.shield{border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain;width:230px;height:345px;top:565px;right:62px;clip-path:polygon(4.5% 14%,8% 10%,20% 6.5%,35% 5%,50% 4.4%,65% 5%,80% 6.5%,92% 10%,95.5% 14%,95.5% 62%,92% 70%,80% 80%,65% 88%,50% 93.5%,35% 88%,20% 80%,8% 70%,4.5% 62%)}
+  /* --- modern glass logo cards (override) --- */
+  .logo,.logo.shield{position:absolute;right:72px;top:706px;width:216px;height:216px;border-radius:48px;border:1px solid rgba(255,255,255,.22);background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.05));-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;padding:30px;object-fit:unset;clip-path:none;width:216px;height:216px}
+  .logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
+  .logo img.screen{mix-blend-mode:screen;filter:none;transform:scale(1.25)}
+  .logo img.shield{height:100%;clip-path:polygon(4.5% 14%,8% 10%,20% 6.5%,35% 5%,50% 4.4%,65% 5%,80% 6.5%,92% 10%,95.5% 14%,95.5% 62%,92% 70%,80% 80%,65% 88%,50% 93.5%,35% 88%,20% 80%,8% 70%,4.5% 62%);filter:none;margin:-6px 0}
+  .logo:has(.shield){padding:16px}
+</style>
+</head>
+<body>
+
+<!-- 1. ОБКЛАДИНКА -->
+<section class="slide s1" id="slide1">
+  <div class="photo"></div><div class="shade"></div>
+  <div class="content">
+    <div class="top"><span>Адвокат · Голова профспілки</span><span class="num">1 / 5</span></div>
+    <div class="spacer"></div>
+    <div class="rule"></div>
+    <div class="name">{{FIO}}</div>
+    <div class="role" style="font-size:30px;line-height:1.3">Адвокат · голова профспілки «Військове право»<br>Слідчий у 2006–2016 рр. · засновниця 4 компаній</div>
+    <div class="cert" style="font-size:25px">Свідоцтво <b>№ {{CERT}}</b> · Рада адвокатів Дніпропетровської області</div>
+    <div class="label">Засновані компанії</div>
+    <div class="co">ПРАВОВИЙ ЗАХИСТ ДНІПРО <small>ЄДРПОУ 45678449</small></div>
+    <div class="co">LEGAL UA <small>ЄДРПОУ 46096359</small></div>
+    <div class="co">ПО «ВІЙСЬКОВЕ ПРАВО» <small>ЄДРПОУ 45011562</small></div>
+    <div class="co">НЕЗАЛЕЖНЕ ЕКСПЕРТНО-КОНСУЛЬТАЦІЙНЕ БЮРО МЕДИЧНИХ ДОСЛІДЖЕНЬ ТА ЕКСПЕРТИЗ ДНІПРО <small>ЄДРПОУ 46122011</small></div>
+    <div class="swipe">Гортайте → кожна компанія окремо</div>
+  </div>
+</section>
+
+<!-- 2. ПРАВОВИЙ ЗАХИСТ ДНІПРО -->
+<section class="slide s2" id="slide2">
+  <div class="photo"></div><div class="shade"></div>
+  <div class="logo"><img src="logo-pz.png"></div>
+  <div class="content">
+    <div class="top"><span>Компанія 01</span><span class="num">2 / 5</span></div>
+    <div class="spacer"></div>
+    <div class="rule"></div>
+    <div class="big">Правовий захист Дніпро</div>
+    <div class="edrpou">ЄДРПОУ 45678449</div>
+    <div class="swipe">Далі → LEGAL UA</div>
+  </div>
+</section>
+
+<!-- 3. LEGAL UA -->
+<section class="slide s3" id="slide3">
+  <div class="photo"></div><div class="shade"></div>
+  <div class="logo"><img src="logo-legalua-white.png"></div>
+  <div class="content">
+    <div class="top"><span>Компанія 02</span><span class="num">3 / 5</span></div>
+    <div class="spacer"></div>
+    <div class="rule"></div>
+    <div class="big">LEGAL UA</div>
+    <div class="edrpou">ЄДРПОУ 46096359</div>
+    <div class="swipe">Далі → Військове право</div>
+  </div>
+</section>
+
+<!-- 4. ПО «ВІЙСЬКОВЕ ПРАВО» -->
+<section class="slide s4" id="slide4">
+  <div class="photo"></div><div class="shade"></div>
+  <div class="logo"><img class="shield" src="logo-vp.png"></div>
+  <div class="content">
+    <div class="top"><span>Компанія 03</span><span class="num">4 / 5</span></div>
+    <div class="spacer"></div>
+    <div class="rule"></div>
+    <div class="big">ПО «Військове право»</div>
+    <div class="edrpou">ЄДРПОУ 45011562</div>
+    <div class="swipe">Далі → Експертне бюро</div>
+  </div>
+</section>
+
+<!-- 5. НЕЗАЛЕЖНЕ ЕКСПЕРТНО-КОНСУЛЬТАЦІЙНЕ БЮРО -->
+<section class="slide s5" id="slide5">
+  <div class="photo"></div><div class="shade"></div>
+  <div class="logo"><img class="screen" src="logo-expert.png"></div>
+  <div class="content">
+    <div class="top"><span>Компанія 04</span><span class="num">5 / 5</span></div>
+    <div class="spacer"></div>
+    <div class="rule"></div>
+    <div class="big" style="font-size:44px">Незалежне експертно-консультаційне бюро медичних досліджень та експертиз Дніпро</div>
+    <div class="edrpou">ЄДРПОУ 46122011</div>
+    <div class="swipe">Медичні дослідження та експертизи · Дніпро</div>
+  </div>
+</section>
+
+</body>
+</html>
