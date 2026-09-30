@@ -26,7 +26,7 @@
   .co{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:16px 0;border-top:1px solid rgba(230,201,138,.35);font-size:30px;font-weight:600;line-height:1.2}
   .co small{font-size:24px;font-weight:400;color:#cfc9ba;white-space:nowrap}
   .big{font-size:64px;line-height:1.1;font-weight:800;text-transform:uppercase}
-  .edrpou{margin-top:22px;font-size:40px;color:var(--gold2);font-weight:600}
+  .edrpou{margin-top:22px;margin-bottom:10px;font-size:40px;color:var(--gold2);font-weight:600}
   .founder{margin-top:36px;padding-top:26px;border-top:1px solid rgba(230,201,138,.35);font-size:30px;line-height:1.4;color:#e4dfd2}
   .founder b{color:var(--white)}
   .swipe{margin-top:30px;font-size:24px;letter-spacing:.12em;color:var(--gold2);text-transform:uppercase}
@@ -34,16 +34,16 @@
   .photo{inset:auto;top:0;left:0;right:0;background-repeat:no-repeat}
   .shade{inset:auto;top:0;left:0;right:0}
   .s1 .photo,.s1 .shade{height:680px}
-  .s2 .photo,.s2 .shade,.s3 .photo,.s3 .shade,.s4 .photo,.s4 .shade,.s5 .photo,.s5 .shade{height:840px}
+  .s2 .photo,.s2 .shade,.s3 .photo,.s3 .shade,.s4 .photo,.s4 .shade,.s5 .photo,.s5 .shade{height:940px}
   .shade{background:linear-gradient(180deg,rgba(11,26,48,.7) 0%,rgba(11,26,48,0) 20%,rgba(11,26,48,0) 60%,var(--navy) 100%)}
   .s1 .photo{background-size:1080px auto;background-position:0 -340px}
   .s2 .photo{background-size:1080px auto;background-position:0 -290px}
   .s3 .photo{background-size:1620px auto;background-position:-470px -600px}
   .s4 .photo{background-size:1620px auto;background-position:0 -1150px}
-  .s5 .photo{background-size:1404px auto;background-position:-300px -1090px}
+  .s5 .photo{background-size:1620px auto;background-position:-380px -1140px}
   .s1 .name{font-size:62px}
-  .logo{position:absolute;right:72px;top:600px;width:210px;height:210px;object-fit:cover;border-radius:50%;border:3px solid var(--gold);background:#0b1a30;box-shadow:0 8px 30px rgba(0,0,0,.5)}
-  .logo.shield{border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain;width:230px;height:345px;top:465px;right:62px;clip-path:polygon(4.5% 14%,8% 10%,20% 6.5%,35% 5%,50% 4.4%,65% 5%,80% 6.5%,92% 10%,95.5% 14%,95.5% 62%,92% 70%,80% 80%,65% 88%,50% 93.5%,35% 88%,20% 80%,8% 70%,4.5% 62%)}
+  .logo{position:absolute;right:72px;top:700px;width:210px;height:210px;object-fit:cover;border-radius:50%;border:3px solid var(--gold);background:#0b1a30;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+  .logo.shield{border:0;border-radius:0;box-shadow:none;background:none;object-fit:contain;width:230px;height:345px;top:565px;right:62px;clip-path:polygon(4.5% 14%,8% 10%,20% 6.5%,35% 5%,50% 4.4%,65% 5%,80% 6.5%,92% 10%,95.5% 14%,95.5% 62%,92% 70%,80% 80%,65% 88%,50% 93.5%,35% 88%,20% 80%,8% 70%,4.5% 62%)}
 </style>
 </head>
 <body>
@@ -77,7 +77,6 @@
     <div class="rule"></div>
     <div class="big">Правовий захист Дніпро</div>
     <div class="edrpou">ЄДРПОУ 45678449</div>
-    <div class="founder"><b>{{FIO}}</b><br>Адвокат · засновниця<br>Свідоцтво адвоката № {{CERT}}<br>Рада адвокатів Дніпропетровської області</div>
     <div class="swipe">Далі → LEGAL UA</div>
   </div>
 </section>
@@ -91,7 +90,6 @@
     <div class="rule"></div>
     <div class="big">LEGAL UA</div>
     <div class="edrpou">ЄДРПОУ 46096359</div>
-    <div class="founder"><b>{{FIO}}</b><br>Адвокат · засновниця<br>Свідоцтво адвоката № {{CERT}}<br>Рада адвокатів Дніпропетровської області</div>
     <div class="swipe">Далі → Військове право</div>
   </div>
 </section>
@@ -106,7 +104,6 @@
     <div class="rule"></div>
     <div class="big">ПО «Військове право»</div>
     <div class="edrpou">ЄДРПОУ 45011562</div>
-    <div class="founder"><b>{{FIO}}</b><br>Голова профспілки військовослужбовців · адвокат<br>Свідоцтво адвоката № {{CERT}}<br>Рада адвокатів Дніпропетровської області</div>
     <div class="swipe">Далі → Експертне бюро</div>
   </div>
 </section>
@@ -121,7 +118,6 @@
     <div class="rule"></div>
     <div class="big" style="font-size:44px">Незалежне експертно-консультаційне бюро медичних досліджень та експертиз Дніпро</div>
     <div class="edrpou">ЄДРПОУ 46122011</div>
-    <div class="founder"><b>{{FIO}}</b><br>Адвокат · засновниця<br>Свідоцтво адвоката № {{CERT}}<br>Рада адвокатів Дніпропетровської області</div>
     <div class="swipe">Юридична допомога військовим та їх родинам</div>
   </div>
 </section>
