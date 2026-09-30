@@ -1,7 +1,7 @@
 // Запуск: node build.js
 // Перед запуском впиши ФІО та номер посвідчення нижче.
 const FIO = "ПОГРІБНЯК АЛІНА ГРИГОРІВНА";
-const CERT = "______";
+const CERT = "5874";
 
 const fs = require("fs");
 const path = require("path");
